@@ -28,7 +28,7 @@
 			</scroll-view>
 		</view>
 		<view class="bg-white">
-			<view class="cu-bar" v-show="oldKeywordList.length!=0">
+			<view class="cu-bar" v-if="oldKeywordList.length!=0">
 				<view class="action flex" style="width: 100%;">
 					<text class="cuIcon-titles text-blue"></text>
 					<text class="text-xl text-bold">历史搜索</text>
@@ -39,8 +39,8 @@
 			<view class="flex padding-sm flex-wrap">
 				
 				<view :key="index" v-for="(key,index) in oldKeywordList" :class="fold?'fold':'unfold'" v-if="fold?index<6:index<10"><button class="cu-btn round margin-lr-sm margin-tb-xs" @tap="NavToRes(key)" >{{key}}</button></view>
-					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="oldKeywordList.length>6&&fold" ><text class="cuIcon-unfold" ></text></button>
-					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-show="!fold" ><text class="cuIcon-fold" ></text></button>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-if="oldKeywordList.length>6&&fold" ><text class="cuIcon-unfold" ></text></button>
+					<button class="cu-btn cuIcon margin-lr-sm margin-tb-xs" @click="btn" v-if="!fold" ><text class="cuIcon-fold" ></text></button>
 					
 				
 			</view>
@@ -49,8 +49,8 @@
 					<view class="action flex" style="width: 100%;">
 						<text class="cuIcon-titles text-blue"></text>
 						<text class="text-xl text-bold">搜索发现</text>
-						<text class="cuIcon-attention" style="margin-left:auto;" @click="btn1" v-show="atten"></text>
-						<text class="cuIcon-attentionforbid" style="margin-left:auto;" @click="btn1" v-show="!atten"></text>
+						<text class="cuIcon-attention" style="margin-left:auto;" @click="btn1" v-if="atten"></text>
+						<text class="cuIcon-attentionforbid" style="margin-left:auto;" @click="btn1" v-if="!atten"></text>
 					</view>
 				</view>
 				<view class="box flex flex-wrap">

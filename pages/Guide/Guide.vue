@@ -1,6 +1,6 @@
 <template>
 	<view id="chat-panel">
-		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block><block slot="content">智能导诊</block></cu-custom>
+		<cu-custom bgColor="bg-gradual-theme" :isBack="true"><block slot="backText">返回</block><block slot="content">智能导诊</block></cu-custom>
 		<view class="cu-chat">
 			<template v-for="(item, index) in chatInfos">
 				<view :key="index" class="cu-item" :class="{ self: item.direction === 'self', server: item.direction === 'server' }" v-if="item.direction !== 'info'">
@@ -63,7 +63,7 @@
 					};
 					this.chatInfos.push(reply);
 				}
-				this.loading = true;
+				//this.loading = true;
 				let THIS = this;
 				uni.request({
 					url: 'http://hh.ricebird.cn/api/hospital/GetNextQuestion',

@@ -25,17 +25,17 @@
 				<view class="ShowHospitalName text-xxl" >
 					<text class="cuIcon-titles text-blue"></text>
 					<text class="text-black text-bold text-xxl" style="color: #000;">{{head[0].name}}</text>
-					<text class="margin-left text-df">{{head[1].name}}</text>
+					<text class="margin-left text-lg">{{head[1].name}}</text>
 				</view>
 			</view>
 		</view>
 		<view class="margin-lr radius bg-white" style="height: auto;" >
-			<view class="text-xxl padding-top margin-left">
+			<view class=" padding-top margin-left">
 				<text class="text-cyan text-xxl">{{depart.name}}</text>
-				<text class="margin-left text-df">({{depart.ExpertNumber}}位专家)</text>
+				<text class="margin-left text-lg">({{depart.ExpertNumber}}位专家)</text>
 			</view>
 			<view class="margin-left margin">
-				<text class="text-df">{{depart.departintro}}</text>
+				<text class="text-lg">{{depart.departintro}}</text>
 			</view>
 			<view class="solids-bottom margin-lr-sm flex" :key="index" v-for="(expert,index) in depart.Experts" @click="NavToDocDetail" v-if="depart.Experts.length>0">
 					<view class="flex-sub">
@@ -43,10 +43,10 @@
 					</view>
 					<view class="flex-twice margin-top margin-bottom margin-right">
 						<view class="display:inline margin-bottom-sm">
-							<text class="margin-right text-xl text-cyan">{{expert.name}}</text>
-							<text>{{expert.level}}</text>
+							<text class="margin-right text-xxl text-cyan">{{expert.name}}</text>
+							<text class="text-df">{{expert.level}}</text>
 						</view>
-					<text class="text-df">{{expert.Abstract}}</text>
+					<text class="text-lg">{{expert.Abstract}}</text>
 					</view>
 			</view>
 			<view class="margin-lr-sm flex "v-if="depart.Experts.length==0">
@@ -99,7 +99,7 @@
 			},
 			back(){
 				uni.reLaunch({
-					url: '../index',
+					url: '../index'
 				});
 			}
 		}

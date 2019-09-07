@@ -3,15 +3,15 @@
 		<statusBar></statusBar>
 		<view class="head">
 			<p>
-				<span><navigator class="cuIcon-home" url="../index"></navigator></span>
+				<span><navigator class="cuIcon-home" open-type="redirect" url="../index"></navigator></span>
 				<span><navigator class="cuIcon-settings" url="../userInfo/userInfo"></navigator></span>
 			</p>
 		</view>	
 		<view class="info">
 			<image v-on:click="NavToInfor()" v-bind:src="imgsrc" />
 			<p class="info_name">
-				<span>{{userInfo.RealName}}</span>
-				<i style="display: inline-block;" class="iconfont icon-nan"></i>
+				<span style="font-size: 44upx;">{{userInfo.RealName}}</span>
+				<i style="display: inline-block; font-size: 44upx;" class="iconfont icon-nan"></i>
 			</p>
 			<p class="info_text">
 				{{userInfo.Grade?userInfo.Grade:"未填写"}} 岁  {{userInfo.Location?userInfo.Location:"未填写地区"}}
@@ -67,6 +67,7 @@
 				<i class="iconfont icon-you1"></i>
 			</navigator>
 		</view>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="3"></bottom-navbar>
 	</view>
 </template>
 
@@ -81,6 +82,28 @@
 					Collections:{	
 					}
 				},
+				mynavs:[
+					{
+						name:"首页",
+						icon:"cuIcon-home",
+						url:"../index2"
+					},
+					{
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"../Guide/Guide"
+					},
+					{
+						name:"科普知识",
+						icon:"cuIcon-discover",
+						url:"../News/newsList?cate=招投标"
+					},
+					{
+						name:"我的",
+						icon:"cuIcon-my",
+						url:"../profile/profile"
+					},
+				],
 			}
 		},
 		onLoad(){
@@ -95,6 +118,12 @@
 			this.GetInfor();
 		},
 		methods: {
+			change(index){
+				this.TabCur=index-1;
+				uni.redirectTo({
+					url:this.mynavs[index].url
+				})
+			},
 			GetInfor(){
 				uni.request({
 					url: 'http://hh.ricebird.cn/uc/GetUserInfo',
@@ -130,7 +159,8 @@
 				});
 			},
 			NavBackIndex(){
-				uni.navigateBack({
+				uni.redirectTo({
+					url:'../index',
 				});
 			}
 			
@@ -147,7 +177,7 @@
 		margin: 0;
 		padding: 0;
 		font-family: 微软雅黑;
-		font-size:32rpx;
+		font-size:36rpx;
 	}
 	.head{
 		/* 头部包含背景图 */
@@ -166,18 +196,18 @@
 		display: inline-block;
 		float: left;
 		padding-left: 10px;
-		font-size: 18px;
+		font-size: 36rpx;
 		font-weight: bold;
 	}
 	.head > p > span:nth-of-type(2){
 		display: inline-block;
 		float: right;
 		padding:0rpx 0rpx 0 0;
-		font-size: 20px;
+		font-size: 36rpx;
 	}
 	.head > p > span> navigator{
 		text-align: center;
-		font-size: 40rpx;
+		font-size: 44rpx;
 		width: 90rpx;
 		margin-right: 20rpx;
 	}
@@ -194,17 +224,18 @@
 		box-shadow: 0 0 6px rgba(255,218,25,0.6);
 	}
 	.info > image{
-		width: 66px;
-		height: 66px;
+		width: 140rpx;
+		height: 140rpx;
 		border-radius: 66px;
 		margin: 0 auto;
 		display: block;
-		margin-top: -33px;
+		margin-top: -70rpx;
 		border: 1px solid #ffda19;
 	}
 	.info_name{
+		margin:5rpx 0;
 		text-align: center;
-		font-size: 16px;
+		font-size: 44rpx;
 		color: #444444;
 		height: 30px;
 		line-height: 30px;
@@ -213,7 +244,7 @@
 		text-align: center;
 		height: 30px;
 		line-height: 30px;
-		font-size: 14px;
+		font-size: 32rpx;
 		color: #6F6F6F;
 	}
 	.info_item{
@@ -223,10 +254,10 @@
 		padding: 4px 0;
 	}
 	.info_item > p:nth-of-type(1){
-		font-size: 12px;
+		font-size: 32rpx;
 	}
 	.info_item > p:nth-of-type(2){
-		font-size: 14px;
+		font-size: 36rpx;
 		color: #6F6F6F;
 	}
 	.info_item:nth-of-type(1){
@@ -278,11 +309,11 @@
 	
 	.icon_comment{
 		border-radius: 100px;
-		font-size: 20px;
-		width: 30px;
-		height: 30px;
+		font-size: 44rpx;
+		width: 70rpx;
+		height: 70rpx;
 		display: inline-block;
-		line-height: 30px;
+		line-height: 70rpx;
 		color: #FFFFFF;
 	}
 	

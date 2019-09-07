@@ -5,20 +5,21 @@
 			<image src="../static/blue.png" style="position: absolute;"></image>
 			<view class="content padding-top-sm">
 				<view class="cu-bar search">
-					<view class="cu-avatar round" style="background-image:url(../mob/static/brand.png); background-color: rgba(0,0,0,0);"></view>
+					<view class="cu-avatar round" style="background-image:url(../static/brand.png); background-color: rgba(0,0,0,0);"></view>
 					<view class="search-form round bg-white">
-						<input @tap="NavToSearch" style="padding-left: 20rpx;" :adjust-position="false" type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
-						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 36rpx;"></text>
+						<input @tap="NavToSearch" style="padding-left: 20rpx; padding-right: 0;" :adjust-position="false"
+						type="text" placeholder="让呼吸更健康" placeholder-class="text-xxl" confirm-type="search"></input>
+						<text class="cuIcon-search text-blue margin-right-sm" style="font-size: 42rpx;"></text>
 					</view>
-					<view class="action">
+					<view class="action" @click="NavToProfile">
 						<text class="text-white text-xxl">厦门</text>
 						<text class="text-white text-xxl margin-left-sm">|</text>
-						<view class="cu-avatar round margin-left-sm" style="background-image:url(../mob/static/avatar.png);"></view>
+						<view class="cu-avatar round margin-left-sm" style="background-image:url(../static/avatar.png);"></view>
 					</view>
 				</view>
 				<view class="flex justify-around align-center margin-right  ">
 					<span class="text-white text-lg" style="z-index:1;">热搜：</span>
-					<span  style="z-index:1;" class="round tag cu-tags text-lg padding-xs" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
+					<span  style="z-index:1;" class="round tag cu-tags text-lg padding-xs" @tap="NavToSearchRes(tag)" :key="index" v-for="(tag,index) in tags">{{tag}}</span>
 				</view>
 			</view>
 		</view>
@@ -37,8 +38,9 @@
 			</view>
 			<view class="cu-bar input radius bg-grey margin-sm" style="background-color: #f9f9f9;margin-left: 0;">
 				<text class="cuIcon-voice text-white bg-blue cu-avatar round" style="font-size: 25px;border: #9edefb solid 7rpx;"></text>
-				<input placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow padding-left" :adjust-position="false" :focus="false" maxlength="300" cursor-spacing="10"></input>
-				<button class="text-sm bg-blue">发送</button>
+				<input @click="NavToGuide" placeholder="请输入症状/疾病/药品..." placeholder-class="text-xl" class="solid-bottom bg-white round shadow" 
+				:adjust-position="false" :focus="false" style="padding: 0 0 0 10px;" maxlength="300" cursor-spacing="10"></input>
+				<button class="text-df bg-blue">发送</button>
 			</view>
 			<view style="background-color: #f9f9f9;">
 				<view class="cu-bar">
@@ -69,16 +71,15 @@
 				<scroll-view scroll-x>
 					<view class="flex text-center" id='subsCard'>
 						<view class="card bg-white margin-lr-sm"  v-for="(hospital,index) in hospitals2" :key="index">
-							<view class="padding-top-sm"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
-							<view class="text text-black text-overflow text-xl">{{hospital.name}}</view>
+							<view class="padding-top-sm" @tap="NavToHosDetail"><image :src="hospital.avatar" class="cu-avatar round lg" style="background-color: white;"></image></view>
+							<view class="text text-black text-overflow text-xl" @tap="NavToHosDetail">{{hospital.name}}</view>
 							<button id="button" class="text-xl" :class="[hospital.state=='关注'?'bg-blue':'']" @tap="subsribe2(index)">{{hospital.state}}</button>
 						</view>
 					</view>
 				</scroll-view>
 			</view>
 		</view>
-		<view style="height: 120rpx;" class="text-xl"></view>
-		<bottom-navbar textsize='text-xxl' :navs='mynavs' v-on:selectchange="change($event)"></bottom-navbar>
+		<bottom-navbar :navs='mynavs' v-on:selectchange="change($event)" :iniTabCur="0"></bottom-navbar>
 	</view>
 </template>
 
@@ -91,25 +92,21 @@
 				scrollLeft: 0,
 				mynavs:[
 					{
-						id:0,
 						name:"首页",
 						icon:"cuIcon-home",
 						url:"./index"
 					},
 					{
-						id:1,
-						name:"招聘",
+						name:"智能导诊",
+						icon:"cuIcon-question",
+						url:"./Guide/Guide"
+					},
+					{
+						name:"科普知识",
 						icon:"cuIcon-discover",
-						url:""
+						url:"./News/newsList?cate=招投标"
 					},
 					{
-						id:3,
-						name:"招投标",
-						icon:"cuIcon-dianhua",
-						url:""
-					},
-					{
-						id:4,
 						name:"我的",
 						icon:"cuIcon-my",
 						url:"./profile/profile"
@@ -202,7 +199,7 @@
 		methods:{
 			change(index){
 				if(!this.mynavs[index].url)return;
-				uni.navigateTo({
+				uni.redirectTo({
 					url:this.mynavs[index].url
 				})
 			},
@@ -232,6 +229,26 @@
 				uni.navigateTo({
 					url:'./Search/Search'
 				})
+			},
+			NavToProfile(){
+				uni.navigateTo({
+					url: './profile/profile',
+				});
+			},
+			NavToSearchRes(e){
+				uni.navigateTo({
+					url:'./Search/Result?keyword='+e
+				});
+			},
+			NavToHosDetail() {
+				uni.navigateTo({
+					url: './HospitalDetail/HospitalDetail',
+				});
+			},
+			NavToGuide(){
+				uni.navigateTo({
+					url: './Guide/Guide',
+				});
 			}
 		}
 	}

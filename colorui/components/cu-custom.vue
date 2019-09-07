@@ -1,12 +1,12 @@
 <template>
 	<view>
 		<view class="cu-custom" :style="[{height:CustomBar + 'px'}]">
-			<view class="cu-bar fixed" :style="style" :class="[bgImage!=''?'none-bg text-white bg-img':'',bgColor]">
-				<view class="action" @tap="BackPage" v-if="isBack">
+			<view class="cu-bar fixed text-xl" :style="style" :class="[bgImage!=''?'none-bg text-white bg-img':'',bgColor]">
+				<view class="action" style="font-size: 36upx;" @tap="BackPage" v-if="isBack">
 					<text class="cuIcon-back"></text>
 					<slot name="backText"></slot>
 				</view>
-				<view class="content" :style="[{top:StatusBar + 'px'}]">
+				<view class="content" style="font-size: 36upx;" :style="[{top:StatusBar + 'px'}]">
 					<slot name="content"></slot>
 				</view>
 				<slot name="right"></slot>
@@ -52,8 +52,8 @@
 		},
 		methods: {
 			BackPage() {
-				uni.navigateBack({
-					delta: 1
+				uni.redirectTo({
+					url:'../index'
 				});
 			}
 		}

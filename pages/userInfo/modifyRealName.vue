@@ -7,9 +7,9 @@
 		<view class="margin">
 			<view class="input-group">
 				<input class="solids-bottom margin-lr padding-left-sm" style="border-radius:30px;"
-				 focus=true v-bind:placeholder="preNickName" type="text" maxlength=100 v-model="nickname">
+				 focus=true v-bind:placeholder="preNickName" placeholder-class="text-lg" type="text" maxlength=100 v-model="nickname">
 			</view>
-			<view class="margin-lr-lg">请输入新昵称</view>
+			<view class="text-lg margin-lr-lg margin-top-xs">请输入新昵称</view>
 			<view class="padding flex flex-direction margin-top-lg">
 				<button class="cu-btn bg-blue lg" size="mini" type="primary" v-on:click="ModifyNickName()" >保存</button>
 			</view>

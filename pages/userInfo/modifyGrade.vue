@@ -7,9 +7,9 @@
 		<view class="margin">
 			<view class="input-group">
 				<input class="solids-bottom margin-lr padding-left-sm" style="border-radius:30px;" 
-				focus=true :placeholder='preAge' type="number" maxlength=3 v-model="age">
+				focus=true :placeholder='preAge' placeholder-class="text-lg" type="number" maxlength=3 v-model="age">
 			</view>
-			<view class="margin-lr-lg">请输入新年龄</view>
+			<view class="margin-lr-lg text-lg margin-top-xs">请输入新年龄</view>
 			<view class="padding flex flex-direction margin-top-lg">
 				<button class="cu-btn bg-blue lg" v-on:click="modifyage" >保存</button>
 			</view>

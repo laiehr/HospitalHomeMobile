@@ -57,7 +57,7 @@
 				</view>
 			</view>
 			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-grey lg" @click="open()">确定</button>
+				<button class="cu-btn bg-grey lg" @click="openDropList()">确定</button>
 			</view>
 		</scroll-view>
 		<view>	<!--搜索结果-->
@@ -65,7 +65,7 @@
 				<view class="cu-item shadow">
 					<view class="title"><view class="text-cut">{{result.name}}</view></view>
 					<view class="content">
-						<image src="../../static/hospital.png" mode="aspectFill"></image>
+						<image src="../../static/hospital0.png" mode="aspectFill"></image>
 						<view class="desc">
 							<view class="text-content">{{result.abstract}}</view>
 							<view >
@@ -100,31 +100,31 @@
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 					{
 						name:'厦门大学附属翔安医院',
 						abstract:'厦门大学附属翔安医院（以下简称翔安医院）位于厦门市翔安区翔安东路2000号，是由厦门市政府与厦门大学共同投资建设的非营利性公立医院',
-						avatar:'../../static/hospital.png',
+						avatar:'../../static/hospital0.png',
 						tags:['市级','公立'],
 					},
 				]
@@ -158,7 +158,8 @@
 				uni.navigateBack();
 			}
 		},
-		onLoad() {
+		onLoad(data) {
+			this.keyword=data.keyword;
 			this.Province=exp;
 		}
 	}

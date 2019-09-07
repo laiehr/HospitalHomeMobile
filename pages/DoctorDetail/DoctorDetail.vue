@@ -25,7 +25,7 @@
 				<view class="ShowHospitalName text-xxl" >
 					<text class="cuIcon-titles text-blue"></text>
 					<text class="text-black text-bold text-xxl" style="color: #000;">{{head[0].name}}</text>
-					<text class="margin-left text-df">{{head[1].name}}</text>
+					<text class="margin-left text-lg">{{head[1].name}}</text>
 				</view>
 			</view>
 		</view>
@@ -33,19 +33,19 @@
 			<view class="solids-bottom padding-bottom-xs margin-lr-sm text-center">
 				<image id='avatar' class="cu-avatar xl round margin" :src="doctor.avatar"></image>
 				<view>
-					<text class="text-xl text-cyan" >{{doctor.name}}</text>
+					<text class="text-xxl text-cyan" >{{doctor.name}}</text>
 				</view>
-				<view class="margin-tb-sm">{{doctor.level}}</view>
-				<view class="margin-tb-sm">{{doctor.introduce}}</view>
-				<view class="margin-tb-sm">{{doctor.skill}}</view>
+				<view class="margin-tb-sm text-lg">{{doctor.level}}</view>
+				<view class="margin-tb-sm text-lg">{{doctor.introduce}}</view>
+				<view class="margin-tb-sm text-lg">{{doctor.skill}}</view>
 			</view>
 			<view class="margin-lr margin-tb-sm">
-				<text class="text-xl flex justify-start" style="color: #000;">排班表</text>
+				<text class="text-xxl flex justify-start" style="color: #000;">排班表</text>
 				<view v-show="doctor.schedule.length==0">
 					<image src="../../static/noschedule.png" mode="widthFix"></image>
 				</view>
 				<view class="margin-tb" v-show="doctor.schedule.length!=0">
-					<view class="cu-tag light bg-cyan radius" style="margin-left:20rpx"
+					<view class="cu-tag light bg-cyan radius text-df" style="margin-left:20rpx"
 					v-for="items in doctor.schedule">{{items.name}}</view>
 				</view>
 			</view>
@@ -77,7 +77,7 @@
 		methods: {
 			back(){
 				uni.reLaunch({
-					url: '../index',
+					url: '../index'
 				});
 			}
 		}

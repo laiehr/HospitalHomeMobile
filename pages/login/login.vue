@@ -1,5 +1,5 @@
 <template>
-	<view class="zai-box">
+	<view class="zai-box" @longpress="NavToIndex()">
 		<image src="../../static/register.png" class="zai-logo"></image>
 		<view class="zai-title">用户登录</view>
 		<view class="zai-form">
@@ -34,6 +34,11 @@
 			
 		},
 		methods: {
+			NavToIndex(){
+				uni.redirectTo({
+					url:'../index'
+				});
+			},
 			getCode()
 			{
 				if(this.mobile.length!=11)

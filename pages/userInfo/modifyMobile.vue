@@ -7,9 +7,9 @@
 		<view class="margin">
 			<view class="input-group">
 				<input class="solids-bottom margin-lr padding-left-sm" style="border-radius:30px;" 
-				focus=true v-bind:placeholder='preMobile' type="number" maxlength=11 v-model="telenum">
+				focus=true v-bind:placeholder='preMobile' placeholder-class="text-lg" type="number" maxlength=11 v-model="telenum">
 			</view>
-			<view class="margin-lr-lg">请输入新手机号</view>
+			<view class="text-lg margin-lr-lg margin-top-xs">请输入新手机号</view>
 			<view class="padding flex flex-direction margin-top-lg">
 				<button class="cu-btn bg-blue lg" v-on:click="modifytele" >保存</button>
 			</view>
